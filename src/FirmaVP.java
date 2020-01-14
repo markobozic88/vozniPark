@@ -20,73 +20,38 @@ public class FirmaVP extends VozniPark {
     }
     @Override
     double porezNaCeneRegistracije(int godina) {
-        double cenaPorezaGod;
+        double cenaPorezaGod = 0;
         double cenaPoreza = 0;
         double ukupnaCenaPoreza = 0;
         for (int k=0; k<nizVozila.length; k++) {
             switch (nizVozila[k].getTipVozila()) {
                 case "p":
-                    if (nizVozila[k].getZapreminaMotora() > 1 && nizVozila[k].getZapreminaMotora() <= 2000) {
+                    if (nizVozila[k].getZapreminaMotora() > 1 && nizVozila[k].getZapreminaMotora() <= 2000){
                         cenaPorezaGod = 10150;
-                        if ((godina - nizVozila[k].getGodinaProizvodnje()) > 5 && (godina - nizVozila[k].getGodinaProizvodnje()) <= 10) {
-                            cenaPoreza = cenaPorezaGod * 0.75;
-                        } else if ((godina - nizVozila[k].getGodinaProizvodnje()) > 10) {
-                            cenaPoreza = cenaPorezaGod * 0.60;
-                        } else {
-                            cenaPoreza = cenaPorezaGod;
-                        }
-                    } else if (nizVozila[k].getZapreminaMotora() > 2000 && nizVozila[k].getZapreminaMotora() <= 3000) {
+                    } else if (nizVozila[k].getZapreminaMotora() > 2000 && nizVozila[k].getZapreminaMotora() <= 3000){
                         cenaPorezaGod = 50350;
-                        if ((godina - nizVozila[k].getGodinaProizvodnje()) > 5 && (godina - nizVozila[k].getGodinaProizvodnje()) <= 10) {
-                            cenaPoreza = cenaPorezaGod * 0.75;
-                        } else if ((godina - nizVozila[k].getGodinaProizvodnje()) > 10) {
-                            cenaPoreza = cenaPorezaGod * 0.60;
-                        } else {
-                            cenaPoreza = cenaPorezaGod;
-                        }
                     } else {
                         cenaPorezaGod = 210920;
-                        if ((godina - nizVozila[k].getGodinaProizvodnje()) > 5 && (godina - nizVozila[k].getGodinaProizvodnje()) <= 10) {
-                            cenaPoreza = cenaPorezaGod * 0.75;
-                        } else if ((godina - nizVozila[k].getGodinaProizvodnje()) > 10) {
-                            cenaPoreza = cenaPorezaGod * 0.60;
-                        } else {
-                            cenaPoreza = cenaPorezaGod;
-                        }
                     }
                     break;
                 case "m":
-                    if (nizVozila[k].getZapreminaMotora() > 1 && nizVozila[k].getZapreminaMotora() <= 500) {
+                    if (nizVozila[k].getZapreminaMotora() > 1 && nizVozila[k].getZapreminaMotora() <= 500){
                         cenaPorezaGod = 3400;
-                        if ((godina - nizVozila[k].getGodinaProizvodnje()) > 5 && (godina - nizVozila[k].getGodinaProizvodnje()) <= 10) {
-                            cenaPoreza = cenaPorezaGod * 0.75;
-                        } else if ((godina - nizVozila[k].getGodinaProizvodnje()) > 10) {
-                            cenaPoreza = cenaPorezaGod * 0.60;
-                        } else {
-                            cenaPoreza = cenaPorezaGod;
-                        }
-                    } else if (nizVozila[k].getZapreminaMotora() > 500 && nizVozila[k].getZapreminaMotora() <= 1100) {
+                    } else if (nizVozila[k].getZapreminaMotora() > 500 && nizVozila[k].getZapreminaMotora() <= 1100){
                         cenaPorezaGod = 8800;
-                        if ((godina - nizVozila[k].getGodinaProizvodnje()) > 5 && (godina - nizVozila[k].getGodinaProizvodnje()) <= 10) {
-                            cenaPoreza = cenaPorezaGod * 0.75;
-                        } else if ((godina - nizVozila[k].getGodinaProizvodnje()) > 10) {
-                            cenaPoreza = cenaPorezaGod * 0.60;
-                        } else {
-                            cenaPoreza = cenaPorezaGod;
-                        }
                     } else {
                         cenaPorezaGod = 11890;
-                        if ((godina - nizVozila[k].getGodinaProizvodnje()) > 5 && (godina - nizVozila[k].getGodinaProizvodnje()) <= 10) {
-                            cenaPoreza = cenaPorezaGod * 0.75;
-                        } else if ((godina - nizVozila[k].getGodinaProizvodnje()) > 10) {
-                            cenaPoreza = cenaPorezaGod * 0.60;
-                        } else {
-                            cenaPoreza = cenaPorezaGod;
-                        }
                     }
                     break;
                 default:
                     System.out.println("Podrazumeva se da unos moze biti samo p ili m");
+            }
+            if ((godina - nizVozila[k].getGodinaProizvodnje()) > 5 && (godina - nizVozila[k].getGodinaProizvodnje()) <= 10){
+                cenaPoreza = cenaPorezaGod * 0.75;
+            } else if ((godina - nizVozila[k].getGodinaProizvodnje()) > 10){
+                cenaPoreza = cenaPorezaGod * 0.60;
+            } else {
+                cenaPoreza = cenaPorezaGod;
             }
             ukupnaCenaPoreza += cenaPoreza;
         }
