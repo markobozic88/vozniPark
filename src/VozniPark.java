@@ -1,6 +1,7 @@
 public abstract class VozniPark {
     private String adresa;
     VozniPark(){ }
+    abstract double porezNaCeneRegistracije(int godina);
     public String getAdresa() {
         return adresa;
     }
